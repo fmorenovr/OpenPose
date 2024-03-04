@@ -61,7 +61,7 @@ apt -y install nvidia-container-toolkit nvidia-docker2
 
 * Clone repository:
   ```
-   git clone -b develop https://github.com/fmorenovr/openpose.git
+   git clone https://github.com/fmorenovr/openpose.git
   ```
 
 **Docker installation**
@@ -75,19 +75,7 @@ sudo docker-compose -f docker-compose.yaml up --build -d
 Test the environment:
 
 ```
-sudo docker exec -it openpose_img bash
-```
-
-If you successfully installed nvidia-docker, try:
-
-```
-sudo docker run --name=openpose -it --rm --gpus all openpose_img bash
-```
-
-Otherwise, use CPU only:
-
-```
-sudo docker run --name=openpose -it --rm openpose_img bash
+sudo docker exec -it openpose bash
 ```
 
 **Local Installation (Ubuntu 18.04)**

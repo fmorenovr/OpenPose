@@ -1,0 +1,21 @@
+version: '3.9'
+services: # enumerate containers to run
+  openpose_estimation:
+    image: openpose_img
+    container_name: openpose
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    restart: always
+    environment:
+      - DOWNLOAD_DATA=false
+      - DOWNLOAD_MODELS=false
+      - DEBUG_MODE=false
+    deploy:
+      resources:
+        reservations:
+#          gpus: all
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]

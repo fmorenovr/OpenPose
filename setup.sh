@@ -10,5 +10,6 @@ export LD_LIBRARY_PATH=/app/openpose/build/python/openpose
 echo "DOWNLOADING MODELS"
 cd /app/openpose/
 rm -rf models/
+mkdir models/
 cd ..
-mv models/ /app/openpose/models/
+mv OpenPose/* /app/openpose/models/

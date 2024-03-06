@@ -2,7 +2,7 @@ import sys
 import cv2
 import numpy as np
 from console_logging.console import Console
-from .utils import get_absolute_path
+from py.utils import get_absolute_path
 from .pose_area_filter import PoseAreaFilter
 from .pose_accuracy_manager import PoseAccuracyManager
 

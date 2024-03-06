@@ -2,7 +2,7 @@
 import os
 import unittest
 from py.pose_estimation import PoseEstimation
-from pu.utils import verifyDir
+from py.utils import verifyDir
 import cv2
 import copy
 from datetime import datetime

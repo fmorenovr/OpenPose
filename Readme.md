@@ -14,11 +14,6 @@ This module has three core operations:
 Uses only one frame as input and returns the coordinates of every person in it, following a matrix of coordinates and
 probabilities, using the following schema:
 
-Given a sample input image:
-
-![sample_result](.github/media/openpose_sample_input.jpeg)
-
-
 It returns two things:
 
 #### Pose keypoints coordenates
@@ -116,41 +111,28 @@ cd build/
 cmake-gui ..
 ```
 
-Step-2, Config CMAKE:
+Step-2, Config CMAKE (terminal):
 
 ```
 mkdir build/
 cd build/
+# CPU only
 cmake -DBUILD_PYTHON=ON  -DGPU_MODE=CPU_ONLY .. && make -j `nproc`
-```
-
-**IF you have troubles with CuDNN, just unflag before perform make -j`nproc`**
-
-Step-2, Just run:
-
-```
-mkdir build/
-cd build/
+# GPU 
 cmake -DBUILD_PYTHON=ON  -DUSE_CuDNN .. && make -j `nproc`
 ```
 
-**You must ensure that BUILD_PYTHON is flagged on**
+Notes:
+* You must ensure that BUILD_PYTHON is flagged on  
+*  You can get the prototxt model files here.
+    or just download models from:
 
-**You can clone and build it in a different directory.**
+    ```
+    cd /app/openpose/models
+    bash getModels.sh
+    ```
 
 Once you successfully installed OpenPose, copy the `openpose/` directory inside this directory one.
-
-
-**IMPORTANT NOTE**
-
-You can get the `prototxt` model files [here](https://github.com/CMU-Perceptual-Computing-Lab/openpose/tree/master/models).
-
-or just downloading by:
-
-```
-cd /app/openpose/models
-bash getModels.sh
-```
 
 ## Testing videos
 
@@ -158,26 +140,7 @@ Download test videos:
 
 ```
 bash get_data.sh
-```
-
-Just run:
-
-```
-   python3 pose_video_test.py --input_video test_1.mp4 --data_path inputs/videos/
-   python3 pose_image_test.py --input_image image_test.png --data_path inputs/
-```
-
-Copying to local dir:
-
-```
-   sudo docker cp openpose:/app/outputs/ .
-```
-
-Copying from local to container dir, first create the det dir inside the container:
-
-```
-   mkdir new_dir/
-   sudo docker cp . openpose:/app/new_dir/
+python3 -m unittest discover -s ./openpose_test -p test_*.py
 ```
 
 ## REFERENCES

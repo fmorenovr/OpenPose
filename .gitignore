@@ -3,6 +3,7 @@
 ####################################
 # Custom files and folders
 build/
+OpenPose/
 /.vscode/
 outputs/
 inputs/

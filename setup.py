@@ -6,7 +6,7 @@ with open(Path('./requirements.txt').resolve()) as f:
 
 setup(
     name="open_pose",  
-    packages=["open_pose", "open_pose/utils"],
+    packages=["py", "py/utils", "py/pose_estimation"],
     install_requires=required,
     version="0.1.1"
 )
